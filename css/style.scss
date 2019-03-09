@@ -13,15 +13,18 @@ img{
   height: auto;
   width:100%; 
 }
-
+.text-c{
+  text-align: center;
+}
+$main-color: #8cd92d;
 header .logo{
   padding: 10px;
   width: 61%;
 }
 .swiper-container {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 20px 0 50px 0;
+  background: #f9f9f9;
   .swiper-slide {
     background-position: center;
     background-size: cover;
@@ -30,3 +33,96 @@ header .logo{
   
   }
 }
+.goods-info{
+  .title{
+    padding: 10px;
+    font-size: 0.4rem;
+  }
+  .text-content{
+    padding: 0 20px;
+    font-size: 0.3rem;
+    text-indent: 2em;
+  }
+  ul{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    .item{
+      flex: 1;
+      padding: 30px 0;
+      position: relative;
+      &:nth-child(1)::before{
+        contain: '';
+        display: none;
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        display: inline-block;
+        margin-top: -0.5rem;
+        width: 2px;
+        height: 1rem;
+        background: #e2e2e2;
+        transform: rotate(20deg)
+      }
+      span{
+        display: block;
+        
+        line-height: 0.4rem;
+        &.light{
+          font-size: 0.3rem;
+          color: $main-color
+        }
+        &.default{
+          font-size: 0.28rem;
+          color: #999;
+        }
+      }
+    }
+  }
+  
+}
+.recite{
+  width: 94%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .left-item{
+      margin-right: 10px;
+    }
+  }
+  &-right{
+    display: flex;
+    align-items: center;
+  }
+  a{
+    display: inline-block;
+    padding: 0.1rem 0.2rem;
+    font-size: 0.3rem;
+    border-radius: 5px;
+    &.left-item{
+      color: #f00;
+      border: solid 2px #f00;      
+    }
+    &.right-item{
+      color: $main-color;
+      border: solid 2px $main-color;
+    }
+  }
+}
+.container{
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  background: #f0f0f0;
+  box-sizing: border-box;
+  
+}
+

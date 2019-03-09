@@ -9,13 +9,20 @@
   <link rel="stylesheet" href="css/swiper.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
+<script>
+  var winW = document.documentElement.clientWidth;//设备的宽
+  var desW = 750;//设计稿的宽
+  var rem = desW / 100;
+  winW > desW ?  winW = desW : ''
+  document.documentElement.style.fontSize = winW / rem + "px";
+</script>
 <body>
   <header>
     <div class="logo">
       <img src="./images/logo.png" />
     </div>
   </header>
+  <!-- 轮播图  -->
   <div class="banner">
     <div class="swiper-container">
       <div class="swiper-wrapper">
@@ -35,6 +42,38 @@
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
+  </div>
+  <!-- 产品信息 -->
+  <div class="goods-info">
+    <h2 class="title text-c">鹅湖香米</h2>
+    <p class="text-content">鹅湖香米，产自世界闻名瓷之源的高岭峰下。这里空气清新、雨量充沛、日照充足、温湿度适宜，含有大量的有机质和速效氯、磷及全钾；无任何污染的山溪水灌溉生产出来的大米，米粒完整，光滑透明，饭爽适口，未经化学药剂熏蒸，不含任何添加剂。
+    </p>
+    <ul>
+      <li class="item text-c">
+        <span class="light">有机农产品</span>
+        <span class="default">种植标准</span>
+      </li>
+      <li class="item text-c">
+        <span class="light">上饶</span>
+        <span class="default">产品产地</span>
+      </li>
+      <li class="item text-c">
+        <span class="light">2018-11-10</span>
+        <span class="default">预计采收时间</span>
+      </li>
+    </ul>
+  </div>
+  <div class="recite">
+    <div class="recite-left">
+      <a href="#" class="left-item">精准扶贫产品</a>
+      <a href="#" class="left-item">CICC质量背书</a>
+    </div>
+    <div class="recite-right">
+      <a href="#" class="right-item">电商购买</a>
+    </div>
+  </div>
+  <div class="container">
+    
   </div>
 
 </body>
