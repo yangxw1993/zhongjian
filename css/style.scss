@@ -16,7 +16,34 @@ img{
 .text-c{
   text-align: center;
 }
+.text-l{
+  text-align: left;
+}
+.text-r{
+  text-align: right;
+}
+.flex-start{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-around{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.flex-bet{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 $main-color: #8cd92d;
+$default-color: #696969;
 header .logo{
   padding: 10px;
   width: 61%;
@@ -29,8 +56,7 @@ header .logo{
     background-position: center;
     background-size: cover;
     width: 300px;
-    height: 300px;
-  
+    height: 300px;  
   }
 }
 .goods-info{
@@ -44,9 +70,6 @@ header .logo{
     text-indent: 2em;
   }
   ul{
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
     .item{
       flex: 1;
       padding: 30px 0;
@@ -85,15 +108,11 @@ header .logo{
   
 }
 .recite{
-  width: 94%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px 15px;
+  border-top: solid 1px #969696;
+  border-bottom: solid 1px #969696;
+  box-sizing: border-box;
   &-left{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     .left-item{
       margin-right: 10px;
     }
@@ -117,12 +136,62 @@ header .logo{
     }
   }
 }
+
+.tab{
+  padding: 20px 0;
+  margin-top: 30px;
+  box-shadow: 0 -5px 5px 0px #ccc;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-sizing: border-box;
+  &-item{
+    flex: 1;
+    font-size: 0.36rem;
+    color: #696969;
+    transition: color 0.3s;
+    &.active{
+      color: $main-color
+    }
+  }
+}
 .container{
-  margin: 20px auto;
-  padding: 20px;
+  margin: 20px 0;
+  padding: 15px;
   width: 100%;
   background: #f0f0f0;
-  box-sizing: border-box;
-  
+  box-sizing: border-box;  
+  .tab-content{
+    display: none;
+    .detection{
+      background: #fff;
+      border-radius: 10px;
+      &-title{
+        padding: 15px 10px;
+        border-bottom: solid 1px #ccc;
+        .icon-title{
+          font-size: 0.3rem;
+          color: $main-color;
+          i{
+            display: inline-block;
+            width: 0.36rem;
+            margin-right: 5px;
+          }
+        }
+        span{
+          font-size: 0.26rem;
+          color: $default-color;
+        }
+      }
+    }
+    .video-detection{
+      font-size: 0.26rem;
+    }
+    .day-detection{
+      font-size: 0.26rem;
+    }
+    &.active{
+      display: block;
+    }
+  }
 }
 

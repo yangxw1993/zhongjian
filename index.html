@@ -48,7 +48,7 @@
     <h2 class="title text-c">鹅湖香米</h2>
     <p class="text-content">鹅湖香米，产自世界闻名瓷之源的高岭峰下。这里空气清新、雨量充沛、日照充足、温湿度适宜，含有大量的有机质和速效氯、磷及全钾；无任何污染的山溪水灌溉生产出来的大米，米粒完整，光滑透明，饭爽适口，未经化学药剂熏蒸，不含任何添加剂。
     </p>
-    <ul>
+    <ul class="flex-bet">
       <li class="item text-c">
         <span class="light">有机农产品</span>
         <span class="default">种植标准</span>
@@ -63,8 +63,8 @@
       </li>
     </ul>
   </div>
-  <div class="recite">
-    <div class="recite-left">
+  <div class="recite flex-bet">
+    <div class="recite-left flex-start">
       <a href="#" class="left-item">精准扶贫产品</a>
       <a href="#" class="left-item">CICC质量背书</a>
     </div>
@@ -72,30 +72,36 @@
       <a href="#" class="right-item">电商购买</a>
     </div>
   </div>
+  <ul class="tab flex-around" id="tab">
+    <li class="tab-item text-c">实时监测</li>
+    <li class="tab-item text-c">农事记录</li>
+    <li class="tab-item text-c">检测报告</li>
+    <li class="tab-item text-c">产地信息</li>
+  </ul>
   <div class="container">
-    
+    <div class="tab-content">
+      <!-- 实时监测 -->
+      <div class="detection">
+        <div class="detection-title flex-bet">
+          <div class="icon-title flex-start">
+            <i><img src="./images/icon_video.png" alt=""></i>
+            实时视频监控</div>
+          <span>24小时全天候视频监控</span>
+        </div>
+        <div class=""></div>
+      </div> 
+    </div>
+    <div class="tab-content">农事记录</div>
+    <div class="tab-content">检测报告</div>
+    <div class="tab-content">产地信息</div>
   </div>
 
 </body>
 <script src="./js/swiper.min.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/index.js"></script>
 <script>
-  var swiper = new Swiper('.swiper-container', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    loop: true,
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  });
+  
 </script>
 
 </html>
