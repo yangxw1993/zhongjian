@@ -13,9 +13,10 @@
   var winW = document.documentElement.clientWidth;//设备的宽
   var desW = 750;//设计稿的宽
   var rem = desW / 100;
-  winW > desW ?  winW = desW : ''
+  winW > desW ? winW = desW : ''
   document.documentElement.style.fontSize = winW / rem + "px";
 </script>
+
 <body>
   <header>
     <div class="logo">
@@ -24,7 +25,7 @@
   </header>
   <!-- 轮播图  -->
   <div class="banner">
-    <div class="swiper-container">
+    <div class="swiper-container swiper-banner">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="./images/banner1.jpg" />
@@ -46,7 +47,8 @@
   <!-- 产品信息 -->
   <div class="goods-info">
     <h2 class="title text-c">鹅湖香米</h2>
-    <p class="text-content">鹅湖香米，产自世界闻名瓷之源的高岭峰下。这里空气清新、雨量充沛、日照充足、温湿度适宜，含有大量的有机质和速效氯、磷及全钾；无任何污染的山溪水灌溉生产出来的大米，米粒完整，光滑透明，饭爽适口，未经化学药剂熏蒸，不含任何添加剂。
+    <p class="text-content">
+      鹅湖香米，产自世界闻名瓷之源的高岭峰下。这里空气清新、雨量充沛、日照充足、温湿度适宜，含有大量的有机质和速效氯、磷及全钾；无任何污染的山溪水灌溉生产出来的大米，米粒完整，光滑透明，饭爽适口，未经化学药剂熏蒸，不含任何添加剂。
     </p>
     <ul class="flex-bet">
       <li class="item text-c">
@@ -85,11 +87,28 @@
         <div class="detection-title flex-bet">
           <div class="icon-title flex-start">
             <i><img src="./images/icon_video.png" alt=""></i>
-            实时视频监控</div>
+            实时视频监控
+          </div>
           <span>24小时全天候视频监控</span>
         </div>
-        <div class=""></div>
-      </div> 
+        <div class="video-title flex-bet" id="videoTitle">
+          <a href="javascript:;" class="btn-prev"></a>
+          <span>12321</span>
+          <a href="javascript:;" class="btn-next"></a>
+        </div>
+        <div class="video ovf">
+          <div class="video-swiper" id="videoSwiper">
+            <div class="video-wrapper ovf" id="videoWrapper">
+              <div class="video-slide fll">
+                <video src="/video/movie.ogg" controls="controls"></video>
+              </div>
+              <div class="video-slide fll">
+                <video src="/video/mov_bbb.mp4" controls="controls"></video>
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
     </div>
     <div class="tab-content">农事记录</div>
     <div class="tab-content">检测报告</div>
@@ -100,8 +119,5 @@
 <script src="./js/swiper.min.js"></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/index.js"></script>
-<script>
-  
-</script>
 
 </html>
