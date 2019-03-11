@@ -41,31 +41,26 @@ $(function(){
   var $title = $('#videoTitle').find('span');
   
   setTitle(curIndex)
+  // 获取标题
   function setTitle (curIndex) {
-    // $title.text($videoSlide.eq(0).attr('data-title') +  (curIndex + '/' + slideSize));
     $title.text(`${$videoSlide.eq(curIndex).attr('data-title')}(${curIndex + 1}/${slideSize})`);
   }
   $('#videoTitle').on('click', 'a', function(){
     let curClassName = $(this).attr('class');
     if(curClassName === 'btn-next'){
       curIndex++;
-      if(curIndex === slideSize){
-        curIndex = 0
-      }
-      videoMove(curIndex);
+      curIndex === slideSize ? curIndex = 0 : '';      
     }else if(curClassName === 'btn-prev'){
       curIndex--;
-      if(curIndex < 0){
-        curIndex = -(slideSize - 1)
-      }
-      videoMove(curIndex);      
+      curIndex < 0 ? curIndex = slideSize - 1 : '';
     }
+    videoMove(curIndex);
     setTitle(curIndex)
   })
+  // 视频移动
   function videoMove(index){
     videoWrapper.stop().animate({
       left: -slideWidth * index
     }, 500);
   }
-  console.log(videoWrapper.outerWidth(true), slideSize);
 })
