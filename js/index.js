@@ -63,4 +63,16 @@ $(function(){
       left: -slideWidth * index
     }, 500);
   }
+
+
+  // 图表
+  $('.chart').find('li').each(function(i){
+    var value = $(this).find('.leval').attr('data-value');
+    var canvasId = $(this).find('canvas').attr('id');
+    console.log(value)
+    new Chart(canvasId).ratePie(value)
+    // console.log(this.find('p').text())
+  })
+  // var cadmium = new Chart('cadmium')
+  // cadmium.ratePie(30);
 })

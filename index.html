@@ -151,13 +151,38 @@
                 <span>55分钟前更新</span>
               </p>
               <ul class="chart flex-around">
-                <li>
-                  <p>镉离子浓度</p>
-                  <div class="circle">
-                    <i class="point">
-                      <span></span>
-                    </i>
-                  </div>
+                <li class="flex-center">
+                  <p class="title">镉离子浓度</p>
+                  <p class="unit">单位：ppb</p>
+                  <p class="leval" data-value="22">优质</p>
+                  <canvas class="canvas" id='cdCanvas'></canvas>
+                  <!-- <div class="circle">
+                    <i class="point"><span></span></i>
+                    <div class="circle-item left">
+                      <div class="progress progress-left"></div>
+                    </div>
+                    <div class="circle-item right">
+                        <div class="progress progress-right"></div>
+                    </div>
+                  </div> -->
+                </li>
+                <li class="flex-center">
+                  <p class="title">铜离子浓度</p>
+                  <p class="unit">单位：ppb</p>
+                  <p class="leval" data-value="20">优质</p>
+                  <canvas class="canvas" id='cuCanvas'></canvas>
+                </li>
+                <li class="flex-center">
+                  <p class="title">铅离子浓度</p>
+                  <p class="unit">单位：ppb</p>
+                  <p class="leval" data-value="10">优质</p>
+                  <canvas class="canvas" id='pdCanvas'></canvas>
+                </li>
+                <li class="flex-center">
+                  <p class="title">PH值</p>
+                  <p class="unit">单位：无</p>
+                  <p class="leval" data-value="7.5">优质</p>
+                  <canvas class="canvas" id='phCanvas'></canvas>
                 </li>
               </ul>
             </div>
@@ -173,6 +198,7 @@
 </body>
 <script src="./js/swiper.min.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/chart.js"></script>
 <script src="./js/index.js"></script>
 
 </html>
