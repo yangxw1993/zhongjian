@@ -20,8 +20,9 @@ $(function(){
   var $tab = $('#tab');
   var $tabContent = $('.tab-content');
   var className = 'active';
-  $tab.find('li').eq(0).addClass(className);
-  $tabContent.eq(0).addClass(className);
+  var showIndex = 2;
+  $tab.find('li').eq(showIndex).addClass(className);
+  $tabContent.eq(showIndex).addClass(className);
   $tab.find('li').on('click', function(){
     let curIndex = $(this).index();
     $(this).addClass(className).siblings().removeClass(className);
