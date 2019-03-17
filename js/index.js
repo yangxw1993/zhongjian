@@ -66,10 +66,34 @@ $(function(){
 
 
   // 图表
-  $('.chart').find('li').each(function(i){
+  var $chartLi = $('.chart').find('li');
+  let status = false;
+  $('.quota').find('li').on('click', '.quota-title', function(){
+    var curEle = $(this).siblings('.quota-content')
+    var isHide = curEle.hasClass('hide');
+    console.log(isHide);
+    if(isHide){
+      curEle.removeClass('hide')
+    }else{
+      curEle.addClass('hide')
+    }
+    // status = !status;
+    /* console.log(status)
+    if(status){
+      $(this).siblings('.quota-content').slideUp();
+    }else{
+      $(this).siblings('.quota-content').slideDown();
+    } */
+    
+  })
+  /* $chartLi.on('click', '.quota-title', function(){
+    console.log($(this).siblings('.quota-content').height())
+    console.log(1)
+    // $(this).siblings('.quota-content').slideDown();
+  }) */
+  $chartLi.each(function(i){
     var value = $(this).find('.leval').attr('data-value');
     var canvasId = $(this).find('canvas').attr('id');
-    console.log(value)
     new Chart(canvasId).ratePie(value)
     // console.log(this.find('p').text())
   })

@@ -297,6 +297,11 @@ header .logo{
         }
         .quota-content{
           padding-bottom: 20px;
+          overflow: hidden;
+          &.hide{
+            height: 0;
+            transition: height 0.3s;
+          }
           .update-time{
             margin: 20px 0;
             font-size: 0.08rem;
@@ -313,7 +318,7 @@ header .logo{
             li{
               flex: 0 1 50%;
               flex-direction: column;
-              margin-top: 20px;
+              margin-top: 20px;             
               .title{
                 font-size: 0.2rem;
                 line-height: 0.3rem;
@@ -392,4 +397,11 @@ header .logo{
     }
   }
 }
-
+@keyframes showHeight{
+  0%{
+    height: auto;
+  };
+  100%{
+    height: 0;
+  }
+}
