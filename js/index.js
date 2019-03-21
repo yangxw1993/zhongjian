@@ -20,7 +20,7 @@ $(function(){
   var $tab = $('#tab');
   var $tabContent = $('.tab-content');
   var className = 'active';
-  var showIndex = 2;
+  var showIndex = 3; // TODO 
   $tab.find('li').eq(showIndex).addClass(className);
   $tabContent.eq(showIndex).addClass(className);
   $tab.find('li').on('click', function(){
@@ -70,13 +70,16 @@ $(function(){
   var $chartLi = $('.chart').find('li');
   let status = false;
   $('.quota').find('li').on('click', '.quota-title', function(){
-    var curEle = $(this).siblings('.quota-content')
+    var curEle = $(this).siblings('.quota-content');
+    var $arrow = $(this).find('.arrow');
     var isHide = curEle.hasClass('hide');
     console.log(isHide);
     if(isHide){
-      curEle.removeClass('hide')
+      curEle.removeClass('hide');
+      $arrow.removeClass('rotate')      
     }else{
-      curEle.addClass('hide')
+      curEle.addClass('hide');
+      $arrow.addClass('rotate')
     }
     // status = !status;
     /* console.log(status)

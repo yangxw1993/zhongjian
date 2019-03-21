@@ -291,6 +291,11 @@ header .logo{
                 display: inline-block;
                 width: 0.4rem;
                 vertical-align: middle;
+                transition: all 0.3s;
+                transform-origin: center;
+                &.rotate{
+                  transform: rotate(180deg)
+                }
               }
             }
           }
@@ -405,11 +410,13 @@ header .logo{
         color: #23c1f0;
       }
       &-wrapper{
+        margin: 20px auto;
+        width: 95%;
         align-items: flex-end;  
-        padding-bottom: 1.2rem;      
+        flex-wrap: wrap;     
         .report-item{
-          flex: 0 1 32%;
-          margin-right: 10px;
+          margin-top: 20px;
+          flex: 0 1 30%;
           img{
             vertical-align: middle;
           }
@@ -417,6 +424,91 @@ header .logo{
             padding-top: 10px;
             font-size: 0.25rem;
             color: #999;
+          }
+        }
+      }
+    }
+    .wrap{
+      margin-top: 20px;
+      padding: 20px 0;
+      width: 100%;
+      box-sizing: border-box;
+      background: #fff;
+      border-radius: 10px;
+      &-title{
+        font-size: 0.3rem;
+        font-weight: normal;
+        padding-bottom: 10px;
+        border-bottom: solid 1px #e1e1e1;
+        .level{
+          color: $main-color;
+        }
+      }
+      .map{
+        margin: 20px auto 0;        
+        width: 95%;
+        height: 3rem;
+        line-height: 3rem;
+        background: #ccc
+      }
+      .indicator{    
+        padding: 0 10px;
+        box-sizing: border-box;  
+        flex-wrap: wrap; 
+        &-item{
+          margin-top: 20px;          
+          flex: 0 1 48%;
+          span{
+            font-size: 0.2rem;
+            line-height: 0.4rem;
+            &.text{
+              color: #A4A4A4
+            }
+            &.value{
+              color: $main-color;
+            }
+          }
+          .progress{
+            display: block;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+          }
+        }
+      }
+      .enterprise{
+        margin: 0 auto;
+        width: 95%;
+        &-item{
+          padding: 8px 0;
+          border-bottom: 1px solid #F5F5F5;
+          span{
+            font-size: 0.25rem;
+            &.name{
+              color: #BDBDBD;
+            }
+            &.value{
+              padding-left: 30px;
+              color: #000;
+            }
+            &.location{
+              i{
+                display: inline-block;
+                width: 0.3rem;
+                vertical-align: middle;
+              }
+              color: #18c6e0;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+      .report-wrapper{
+        align-items: flex-start;
+        .report-item{
+          margin-right: 3%;
+          &::nth-child(3n){
+            margin-right: 0;
           }
         }
       }
