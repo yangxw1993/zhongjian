@@ -26,18 +26,18 @@
   <!-- 轮播图  -->
   <div class="banner">
     <div class="swiper-container swiper-banner">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/banner1.jpg" />
+      <div class="swiper-wrapper preview">
+        <div class="swiper-slide" >
+          <img class="prev" src="./images/banner1.jpg" />
         </div>
         <div class="swiper-slide">
-          <img src="./images/banner2.jpg" />
+          <img class="prev" src="./images/banner2.jpg" />
         </div>
         <div class="swiper-slide">
-          <img src="./images/banner3.jpg" />
+          <img class="prev" src="./images/banner3.jpg" />
         </div>
         <div class="swiper-slide">
-          <img src="./images/banner4.jpg" />
+          <img class="prev" src="./images/banner4.jpg" />
         </div>
       </div>
       <!-- Add Pagination -->
@@ -363,7 +363,7 @@
       </div>
       <div class="wrap">
         <h3 class="wrap-title text-c">企业展示</h3>
-        <div class="report-wrapper flex-start">
+        <div class="report-wrapper flex-start preview">
           <div class="report-item">
             <img src="./images/honour_1.jpg" alt="" />
           </div>
@@ -384,10 +384,19 @@
     </div>
   </div>
 
+  <div class="fixed hide" id="fixed">
+    <div class="fixed-container">
+      <div class="swiper-wrapper" id="fixedWrapper">
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
 </body>
 <script id="operateTmp" type="text/x-handlebars-template">
   {{#each this}}
   <li class="operate-item">
+    <span class="step text-c">{{addOne @index}}</span>
     <p class="operate-title text-c">{{title}}</p>
     <div class="flex-bet text-wrapper">
       <span class="time">{{time}}</span>
@@ -400,18 +409,24 @@
         <img data-src="./images/{{bigImg}}" src="./images/{{img}}" />
       </div>
       {{/each}}
-      <!-- <div class="img-item">
-        <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
-      </div> -->
     </div>
   </li>
   {{/each}}
+</script>
+<script id="previewTmp"  type="text/x-handlebars-template">
+  {{#each this}}      
+    <div class="swiper-slide">
+      <img src="{{this}}" />
+    </div>
+  {{/each}}
+  
 </script>
 <script src="js/data.js"></script>
 <script src="./js/swiper.min.js"></script>
 <script src="./js/handlebars.min.js"></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/chart.js"></script>
+<script src="./utils/utils.js"></script>
 <script src="./js/index.js"></script>
 
 </html>
