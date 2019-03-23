@@ -283,75 +283,7 @@
     </div>
     <div class="tab-content">
       <h3 class="wrap-title text-c">13项农事操作</h3>
-      <ul class="operate flex-bet">
-        <li class="operate-item">
-          <p class="operate-title text-c">产地土壤整修记录</p>
-          <div class="flex-bet text-wrapper">
-            <span class="time">2018-03-15</span>
-            <span class="aothor">华春雨</span>
-          </div>
-          <span class="text">正在进行春耕前的土地休整工作，土地休整预计持续3天，需要分配10-20人次进行反复翻整。</span>
-          <div class="img-wrapper flex-start">
-            <div class="img-item">
-              <img data-src="./images/0315_1_2.jpg" src="./images/0315_1_1.jpg" />
-            </div>
-            <div class="img-item">
-                <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
-              </div>
-          </div>
-        </li>
-        <li class="operate-item">
-          <p class="operate-title text-c">产地水质检测</p>
-          <div class="flex-bet text-wrapper">
-            <span class="time">2018-03-15</span>
-            <span class="aothor">华春雨</span>
-          </div>
-          <span class="text">正在进行春耕前的土地休整工作，土地休整预计持续3天，需要分配10-20人次进行反复翻整。</span>
-          <div class="img-wrapper flex-start">
-            <div class="img-item">
-              <img data-src="./images/0315_1_2.jpg" src="./images/0315_1_1.jpg" />
-            </div>
-            <div class="img-item">
-                <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
-              </div>
-          </div>
-        </li>
-        <li class="operate-item">
-          <p class="operate-title text-c">产地土壤整修记录</p>
-          <div class="flex-bet text-wrapper">
-            <span class="time">2018-03-15</span>
-            <span class="aothor">华春雨</span>
-          </div>
-          <span class="text">正在进行春耕前的土地休整工作，土地休整预计持续3天，需要分配10-20人次进行反复翻整。</span>
-          <div class="img-wrapper flex-start">
-            <div class="img-item">
-              <img data-src="./images/0315_1_2.jpg" src="./images/0315_1_1.jpg" />
-            </div>
-            <div class="img-item">
-                <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
-              </div>
-          </div>
-        </li>
-        <li class="operate-item">
-          <p class="operate-title text-c">产地土壤整修记录</p>
-          <div class="flex-bet text-wrapper">
-            <span class="time">2018-03-15</span>
-            <span class="aothor">华春雨</span>
-          </div>
-          <span class="text">正在进行春耕前的土地休整工作，土地休整预计持续3天，需要分配10-20人次进行反复翻整。</span>
-          <div class="img-wrapper flex-start">
-            <div class="img-item">
-              <img data-src="./images/0315_1_2.jpg" src="./images/0315_1_1.jpg" />
-            </div>
-            <div class="img-item">
-                <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
-              </div>
-          </div>
-        </li>
-        <li class="operate-item"></li>
-        <li class="operate-item"></li>
-        <li class="operate-item"></li>
-      </ul>
+      <ul class="operate flex-bet" id="operate"></ul>
     </div>
     <div class="tab-content">
       <div class="report">
@@ -453,7 +385,31 @@
   </div>
 
 </body>
+<script id="operateTmp" type="text/x-handlebars-template">
+  {{#each this}}
+  <li class="operate-item">
+    <p class="operate-title text-c">{{title}}</p>
+    <div class="flex-bet text-wrapper">
+      <span class="time">{{time}}</span>
+      <span class="aothor">{{author}}</span>
+    </div>
+    <span class="text">{{content}}</span>
+    <div class="img-wrapper flex-start">
+      {{#each imgList}}      
+      <div class="img-item">
+        <img data-src="./images/{{bigImg}}" src="./images/{{img}}" />
+      </div>
+      {{/each}}
+      <!-- <div class="img-item">
+        <img data-src="./images/0315_2_2.jpg" src="./images/0315_2_1.jpg" />
+      </div> -->
+    </div>
+  </li>
+  {{/each}}
+</script>
+<script src="js/data.js"></script>
 <script src="./js/swiper.min.js"></script>
+<script src="./js/handlebars.min.js"></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/chart.js"></script>
 <script src="./js/index.js"></script>

@@ -103,4 +103,17 @@ $(function(){
   })
   // var cadmium = new Chart('cadmium')
   // cadmium.ratePie(30);
+
+
+  // 农事操作
+ 
+
+  function bindData(res,template,el) {
+    var t=template.html();
+    var f=Handlebars.compile(t);
+    var h=f(res);
+    el.html(h);
+  }
+  console.log(JSON.stringify(farmData));
+  bindData(farmData, $('#operateTmp'), $('#operate'))
 })
