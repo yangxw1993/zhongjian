@@ -20,7 +20,7 @@ $(function(){
   var $tab = $('#tab');
   var $tabContent = $('.tab-content');
   var className = 'active';
-  var showIndex = 3; // TODO 
+  var showIndex = 1; // TODO 
   $tab.find('li').eq(showIndex).addClass(className);
   $tabContent.eq(showIndex).addClass(className);
   $tab.find('li').on('click', function(){

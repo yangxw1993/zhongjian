@@ -513,5 +513,39 @@ header .logo{
         }
       }
     }
+    .operate{
+      flex-wrap: wrap;
+      &-item{
+        padding: 10px;
+        flex: 0 1 48%;
+        width: 48%;
+        margin-top: 20px;
+        font-size: 0.24rem;
+        background: #fff;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      &-title{
+        line-height: 0.3rem;
+        color: #666;
+      }
+      .text-wrapper{        
+        color: #999;
+      }
+      .text{
+        display: inline-block;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .img-wrapper{
+        margin-top: 10px;
+        .img-item{
+          flex: 0 1 30%;
+          margin-right: 2%;
+        }
+      }
+    }
   }
 }
