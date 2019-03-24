@@ -576,8 +576,37 @@ header .logo{
   &.hide{
     display: none;
   }
+  &-content{
+    position: relative;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 95%;
+    background: #fff;
+    font-size: 0.3rem;
+    overflow: hidden;
+    border-radius: 10px;
+    .fixed-text{
+      display: none;
+    }
+    .fixed-title{
+      font-size: 0.5rem;
+    }
+    .desc{
+      margin: 10px auto;
+      width: 95%;
+      span{
+        color: #999;
+      }
+      .text{
+        margin-top: 10px;
+        color: #999;
+      }
+    }
+  }
   &-container{
-    width: 100%;
+    position: relative;
+    width: 95%;
     .close{
       display: block;
       width: 0.5rem;

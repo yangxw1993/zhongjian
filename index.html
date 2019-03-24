@@ -27,7 +27,7 @@
   <div class="banner">
     <div class="swiper-container swiper-banner">
       <div class="swiper-wrapper preview">
-        <div class="swiper-slide" >
+        <div class="swiper-slide">
           <img class="prev" src="./images/banner1.jpg" />
         </div>
         <div class="swiper-slide">
@@ -41,7 +41,7 @@
         </div>
       </div>
       <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination banner-pagination"></div>
     </div>
   </div>
   <!-- 产品信息 -->
@@ -288,7 +288,7 @@
     <div class="tab-content">
       <div class="report">
         <p class="text-c report-title">检测报告</p>
-        <div class="report-wrapper flex-start">
+        <div class="report-wrapper flex-start  preview">
           <div class="report-item">
             <img src="./images/report1.jpg" alt="" />
             <p class="text-c">产前土壤重金属分析报告</p>
@@ -385,11 +385,21 @@
   </div>
 
   <div class="fixed hide" id="fixed">
-    <div class="fixed-container">
-      <div class="swiper-wrapper" id="fixedWrapper">
+    <div class="fixed-content flex-center">
+      <p class="fixed-title fixed-text" id="fixedTitle">标题</p>
+      <div class="swiper-container fixed-container" id="fixedContainer">
+        <div class="swiper-wrapper" id="fixedWrapper">
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
       </div>
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
+      <div class="desc fixed-text">
+        <div class="flex-bet">
+          <span id="operateDate"></span>
+          <span id="operateAuthor"></span>
+        </div>
+        <div class="text" id="operateText"></div>
+      </div>
     </div>
   </div>
 </body>
@@ -403,7 +413,7 @@
       <span class="aothor">{{author}}</span>
     </div>
     <span class="text">{{content}}</span>
-    <div class="img-wrapper flex-start">
+    <div class="img-wrapper flex-start  preview" data-type="operate" data-index="{{@index}}">
       {{#each imgList}}      
       <div class="img-item">
         <img data-src="./images/{{bigImg}}" src="./images/{{img}}" />
@@ -413,13 +423,12 @@
   </li>
   {{/each}}
 </script>
-<script id="previewTmp"  type="text/x-handlebars-template">
+<script id="previewTmp" type="text/x-handlebars-template">
   {{#each this}}      
     <div class="swiper-slide">
       <img src="{{this}}" />
     </div>
-  {{/each}}
-  
+  {{/each}}  
 </script>
 <script src="js/data.js"></script>
 <script src="./js/swiper.min.js"></script>

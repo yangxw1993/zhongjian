@@ -13,7 +13,7 @@ $(function () {
       slideShadows: true,
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.banner-pagination',
     },
   });
   // tab栏切换
@@ -88,13 +88,8 @@ $(function () {
     new Chart(canvasId).ratePie(value)
     // console.log(this.find('p').text())
   })
-  // var cadmium = new Chart('cadmium')
-  // cadmium.ratePie(30);
-
 
   // 农事操作
-
-
   function bindData(res, template, el) {
     var t = template.html();
     var f = Handlebars.compile(t);
@@ -107,39 +102,53 @@ $(function () {
   bindData(farmData, $('#operateTmp'), $('#operate'))
 
  
-
+  var swiperFixed = null;
   $('.preview').click(function(){
-    var curAllImg = $(this).find('img')
+    var curAllImg = $(this).find('img');
+    var operate = $(this).attr('data-type');
+    
     var imgArr = [];
     curAllImg.each(function(){
-      imgArr.push($(this).attr('src'))
+      var dataSrc= $(this).attr('data-src');
+      if(dataSrc){
+        imgArr.push(dataSrc)
+      }else{
+        imgArr.push($(this).attr('src'))
+      }
+      
     });
     imgArr = deleteCopy(imgArr); // 数组去重
-    console.log(imgArr);
-    var eleStr = ''
-    // imgArr.forEach(function(item){
-    //   eleStr += '<div class="swiper-slide"><img src="'+ item +'" /></div>'
-    // })
-    console.log(eleStr);
     $('#fixed').removeClass('hide');
-    // $('#fixedWrapper').html(eleStr);
-    bindData(imgArr, $('#previewTmp'), $('#fixedWrapper'))
-    var swiperFixed = new Swiper('.fixed-container', {
+    bindData(imgArr, $('#previewTmp'), $('#fixedWrapper'));
+    if(operate && operate === 'operate'){
+      var dataIndex = $(this).attr('data-index');
+      var curData = farmData[dataIndex];
+      $('#fixedTitle').text(curData.title)
+      $('#operateDate').text('操作时间：' + curData.time)
+      $('#operateAuthor').text('操作人：' + curData.author)
+      $('#operateText').text(curData.content)
+      $('.fixed-text').show();
+    }else{
+      $('.fixed-text').hide();
+    }
+    swiperFixed = new Swiper('.fixed-container', {
+      loop: true,
       pagination: {
         el: '.swiper-pagination',
       },
     });
-    /* console.log($(this).attr('src'));
-    var siblingsImg = $(this).parent().siblings().find('.prev');
-    siblingsImg.each(function(){
-      console.log(this.src)
-    }); */
   })
-  $('#fixedWrapper').click(function(e){
+  /* swiperFixed = new Swiper('.fixed-container', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  }); */
+  $('.fixed-content').click(function(e){
     e.stopPropagation();
   })
   $('#fixed').click(function(e){
-    
+    swiperFixed.destroy(false);
     $(this).addClass('hide')
   })
 })

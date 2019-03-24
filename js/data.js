@@ -10,8 +10,8 @@ var farmData = [
         bigImg: '0315_1_2.jpg',
       },
       {
-        img: '0315_1_1.jpg',
-        bigImg: '0315_1_2.jpg',
+        img: '0315_2_1.jpg',
+        bigImg: '0315_2_2.jpg',
       }
     ]
   },
