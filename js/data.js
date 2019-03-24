@@ -1,3 +1,4 @@
+// 农事操作
 var farmData = [
   {
     title: "产地土壤整修记录",
@@ -226,5 +227,20 @@ var farmData = [
         bigImg: '0410_2_2.jpg',
       }
     ]
+  }
+];
+
+var videoList = [
+  {
+    videoUrl: './video/movie.ogg',
+    title: "威坪村有机大米1号"
+  },
+  {
+    videoUrl: './video/mov_bbb.mp4',
+    title: "威坪村有机大米2号"
+  },
+  {
+    videoUrl: './video/movie.ogg',
+    title: "威坪村有机大米3号"
   }
 ]

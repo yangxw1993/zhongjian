@@ -97,17 +97,8 @@
           <a href="javascript:;" class="btn-next"></a>
         </div>
         <div class="video ovf">
-          <div class="video-swiper" id="videoSwiper">
-            <div class="video-wrapper ovf" id="videoWrapper">
-              <div class="video-slide fll" data-title="威坪村有机大米1号">
-                <video src="./video/movie.ogg" controls="controls"></video>
-              </div>
-              <div class="video-slide fll" data-title="威坪村有机大米2号">
-                <video src="./video/mov_bbb.mp4" controls="controls"></video>
-              </div>
-              <div class="video-slide fll" data-title="威坪村有机大米3号">
-                <video src="./video/movie.ogg" controls="controls"></video>
-              </div>
+          <div class="swiper-container video-container">
+            <div class="swiper-wrapper" id="videoWrapper">
             </div>
           </div>
         </div>
@@ -303,7 +294,7 @@
     <div class="tab-content">
       <div class="wrap">
         <h3 class="wrap-title text-c">卫星农场地图</h3>
-        <div class="map">地图</div>
+        <div class="map" id="map">地图</div>
       </div>
       <div class="wrap">
         <h3 class="wrap-title text-c">农场气候环境<span class="level">(优质)</span></h3>
@@ -430,12 +421,20 @@
     </div>
   {{/each}}  
 </script>
+<script id="videoTmp" type="text/x-handlebars-template">
+  {{#each this}}  
+    <div class="swiper-slide">
+      <video src="{{videoUrl}}" controls="controls"></video>
+    </div>
+  {{/each}}  
+</script>
 <script src="js/data.js"></script>
 <script src="./js/swiper.min.js"></script>
 <script src="./js/handlebars.min.js"></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/chart.js"></script>
 <script src="./utils/utils.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3lBVvS6RgsD8evkvqCbgCFs5GtaMGxdn"></script>
 <script src="./js/index.js"></script>
 
 </html>

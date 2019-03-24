@@ -1,4 +1,11 @@
 $(function () {
+  // 绑定数据
+  function bindData(res, template, el) {
+    var t = template.html();
+    var f = Handlebars.compile(t);
+    var h = f(res);
+    el.html(h);
+  }
   var swiper = new Swiper('.swiper-banner', {
     effect: 'coverflow',
     grabCursor: true,
@@ -20,7 +27,7 @@ $(function () {
   var $tab = $('#tab');
   var $tabContent = $('.tab-content');
   var className = 'active';
-  var showIndex = 1; // TODO 
+  var showIndex = 0; // TODO 
   $tab.find('li').eq(showIndex).addClass(className);
   $tabContent.eq(showIndex).addClass(className);
   $tab.find('li').on('click', function () {
@@ -31,40 +38,34 @@ $(function () {
 
 
   // 视频切换
-  var videoSwiper = $('#videoSwiper');
-  var videoWrapper = $('#videoWrapper');
-  var $videoSlide = videoSwiper.find('.video-slide')
-  var slideSize = $videoSlide.size();
-  var slideWidth = videoWrapper.outerWidth(true);
-  $videoSlide.width(slideWidth)
-  videoWrapper.width(slideWidth * slideSize)
-  var curIndex = 0
-  var $title = $('#videoTitle').find('span');
-
-  setTitle(curIndex)
-  // 获取标题
-  function setTitle(curIndex) {
-    $title.text(`${$videoSlide.eq(curIndex).attr('data-title')}(${curIndex + 1}/${slideSize})`);
-  }
-  $('#videoTitle').on('click', 'a', function () {
-    let curClassName = $(this).attr('class');
-    if (curClassName === 'btn-next') {
-      curIndex++;
-      curIndex === slideSize ? curIndex = 0 : '';
-    } else if (curClassName === 'btn-prev') {
-      curIndex--;
-      curIndex < 0 ? curIndex = slideSize - 1 : '';
+  bindData(videoList, $('#videoTmp'), $('#videoWrapper'))
+  var swiperVideo = new Swiper('.video-container', {
+    loop: true,
+  });
+  var curVideoIndex = swiperVideo.activeIndex;
+  var $videoTitle = $('#videoTitle');
+  console.log(curVideoIndex);
+  setVideoTitle(curVideoIndex)
+  $videoTitle.on('click', 'a', function(){
+    var curClassName = $(this).attr('class');
+    if(curClassName === 'btn-next'){
+      swiperVideo.slideNext();
+    }else if(curClassName === 'btn-prev'){
+      swiperVideo.slidePrev();
     }
-    videoMove(curIndex);
-    setTitle(curIndex)
-  })
-  // 视频移动
-  function videoMove(index) {
-    videoWrapper.stop().animate({
-      left: -slideWidth * index
-    }, 500);
+    curVideoIndex = swiperVideo.activeIndex;
+    if(curVideoIndex > videoList.length){
+      curVideoIndex = 1;
+    }
+    if(curVideoIndex < 1){
+      curVideoIndex = videoList.length;
+    }
+    console.log(curVideoIndex)
+    setVideoTitle(curVideoIndex);
+  });
+  function setVideoTitle(index){
+    $videoTitle.find('span').text(`${videoList[index-1].title}(${index}/${videoList.length})`);
   }
-
 
   // 图表
   var $chartLi = $('.chart').find('li');
@@ -90,37 +91,32 @@ $(function () {
   })
 
   // 农事操作
-  function bindData(res, template, el) {
-    var t = template.html();
-    var f = Handlebars.compile(t);
-    var h = f(res);
-    el.html(h);
-  }  
+
   Handlebars.registerHelper('addOne', function (index) {
     return index + 1;
-  }); 
+  });
   bindData(farmData, $('#operateTmp'), $('#operate'))
 
- 
+
   var swiperFixed = null;
-  $('.preview').click(function(){
+  $('.preview').click(function () {
     var curAllImg = $(this).find('img');
     var operate = $(this).attr('data-type');
-    
+
     var imgArr = [];
-    curAllImg.each(function(){
-      var dataSrc= $(this).attr('data-src');
-      if(dataSrc){
+    curAllImg.each(function () {
+      var dataSrc = $(this).attr('data-src');
+      if (dataSrc) {
         imgArr.push(dataSrc)
-      }else{
+      } else {
         imgArr.push($(this).attr('src'))
       }
-      
+
     });
     imgArr = deleteCopy(imgArr); // 数组去重
     $('#fixed').removeClass('hide');
     bindData(imgArr, $('#previewTmp'), $('#fixedWrapper'));
-    if(operate && operate === 'operate'){
+    if (operate && operate === 'operate') {
       var dataIndex = $(this).attr('data-index');
       var curData = farmData[dataIndex];
       $('#fixedTitle').text(curData.title)
@@ -128,7 +124,7 @@ $(function () {
       $('#operateAuthor').text('操作人：' + curData.author)
       $('#operateText').text(curData.content)
       $('.fixed-text').show();
-    }else{
+    } else {
       $('.fixed-text').hide();
     }
     swiperFixed = new Swiper('.fixed-container', {
@@ -138,17 +134,31 @@ $(function () {
       },
     });
   })
-  /* swiperFixed = new Swiper('.fixed-container', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  }); */
-  $('.fixed-content').click(function(e){
+  $('.fixed-content').click(function (e) {
     e.stopPropagation();
   })
-  $('#fixed').click(function(e){
+  $('#fixed').click(function (e) {
     swiperFixed.destroy(false);
     $(this).addClass('hide')
   })
+
+  // 地图
+  // 百度地图API功能
+  var map = new BMap.Map("map");    // 创建Map实例
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+  //添加地图类型控件
+  map.addControl(new BMap.MapTypeControl({
+    mapTypes: [
+      BMAP_NORMAL_MAP,
+      BMAP_HYBRID_MAP
+    ]
+  }));
+  // map.setCurrentCity("上饶");          // 设置地图显示的城市 此项是必须设置的
+  map.centerAndZoom("上饶", 15);
+  setTimeout(function () {
+    map.setZoom(14);
+  }, 2000);  //2秒后放大到14级
+  map.enableDragging();
+  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
 })
