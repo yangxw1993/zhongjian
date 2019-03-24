@@ -85,9 +85,9 @@ $(function () {
   })
   $chartLi.each(function (i) {
     var value = $(this).find('.leval').attr('data-value');
+    let totalValue = $(this).find('.leval').attr('data-total');
     var canvasId = $(this).find('canvas').attr('id');
-    new Chart(canvasId).ratePie(value)
-    // console.log(this.find('p').text())
+    new Chart(canvasId).ratePie(value, totalValue)
   })
 
   // 农事操作
@@ -106,12 +106,7 @@ $(function () {
     var imgArr = [];
     curAllImg.each(function () {
       var dataSrc = $(this).attr('data-src');
-      if (dataSrc) {
-        imgArr.push(dataSrc)
-      } else {
-        imgArr.push($(this).attr('src'))
-      }
-
+      dataSrc ? imgArr.push(dataSrc) : imgArr.push($(this).attr('src'));
     });
     imgArr = deleteCopy(imgArr); // 数组去重
     $('#fixed').removeClass('hide');
