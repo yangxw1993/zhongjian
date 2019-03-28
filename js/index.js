@@ -8,6 +8,9 @@ $(function () {
   }
   var swiper = new Swiper('.swiper-banner', {
     effect: 'coverflow',
+    autoplay: {
+      delay: 5000,//5秒切换一次
+    },
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
